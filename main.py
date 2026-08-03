@@ -1,5 +1,6 @@
 def main():
     print("Feature")
+    print("Hotfix testing template")
 
 
 
