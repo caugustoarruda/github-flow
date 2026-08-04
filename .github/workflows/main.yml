@@ -23,6 +23,6 @@ jobs:
       - name: "Definição da versão mais recente do Node"
         uses: actions/setup-node@v4
         with: 
-          node-version: "20"
+          node-version: "24"
       - name: "Verificação da versão do Node depois de atualizar a versao"
         run: node --version
