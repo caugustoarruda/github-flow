@@ -19,7 +19,7 @@ jobs:
       - name: "Verifica se existe o ffmpeg"
         run: |
           ffmpeg --help
-          echo "$ENV_WORKFLOW"
+          echo $ENV_WORKFLOW
       # - name: "Segunda ação"
       #   run: echo "Voce criou o seu primeiro workflow"
   # segundo-job:
