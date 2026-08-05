@@ -10,6 +10,10 @@ jobs:
     # onde sera executado a ação
     runs-on: ubuntu-latest
     steps:
+      - name: Instrala o ffmpeg
+        run: |
+          sudo apt update --yes
+          sudo apt install ffmpeg --yes
       - name: "Verifica se existe o ffmpeg"
         run: ffmpeg --help
       # - name: "Segunda ação"
