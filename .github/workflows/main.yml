@@ -4,6 +4,8 @@ on:
   # push:
   #   branches: ["main"]
   workflow_dispatch:
+env:
+  ENV_WORKFLOW: "ENV WORKFLOW"
 jobs:
   runner-job:
     name: "Meu primeiro Job"
@@ -15,7 +17,9 @@ jobs:
           sudo apt update --yes
           sudo apt install ffmpeg --yes
       - name: "Verifica se existe o ffmpeg"
-        run: ffmpeg --help
+        run: |
+          ffmpeg --help
+          echo "$ENV_WORKFLOW
       # - name: "Segunda ação"
       #   run: echo "Voce criou o seu primeiro workflow"
   # segundo-job:
