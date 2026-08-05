@@ -1,29 +1,29 @@
-name: primeira-pipeline
+name: Runners
 # qual evento ira dar o trigger na pipeline
 on:
-  push:
-    branches: ["main"]
+  # push:
+  #   branches: ["main"]
   workflow_dispatch:
 jobs:
-  primeiro-job:
+  runner-job:
     name: "Meu primeiro Job"
     # onde sera executado a ação
     runs-on: ubuntu-latest
     steps:
-      - name: "Minha primeira ação"
-        run: echo "Hello World"
-      - name: "Segunda ação"
-        run: echo "Voce criou o seu primeiro workflow"
-  segundo-job:
-    needs: primeiro-job
-    name: "Instalação do ambiente NodeJS"
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Verificação da versão do Node"
-        run: node --version
-      - name: "Definição da versão mais recente do Node"
-        uses: actions/setup-node@v4
-        with: 
-          node-version: "24"
-      - name: "Verificação da versão do Node depois de atualizar a versao"
-        run: node --version
+      - name: "Verifica se existe o ffmpeg"
+        run: ffmpeg --help
+      # - name: "Segunda ação"
+      #   run: echo "Voce criou o seu primeiro workflow"
+  # segundo-job:
+  #   needs: primeiro-job
+  #   name: "Instalação do ambiente NodeJS"
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: "Verificação da versão do Node"
+  #       run: node --version
+  #     - name: "Definição da versão mais recente do Node"
+  #       uses: actions/setup-node@v4
+  #       with: 
+  #         node-version: "24"
+  #     - name: "Verificação da versão do Node depois de atualizar a versao"
+  #       run: node --version
