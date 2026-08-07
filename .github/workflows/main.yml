@@ -33,7 +33,7 @@ jobs:
       - name: "Print all inputs"
         run: |
           echo "Printing all inputs"
-          echo ${{ inputs }}
+          echo ${{ toJson(inputs) }}
 
     #   - name: Instrala o ffmpeg
     #     run: |
