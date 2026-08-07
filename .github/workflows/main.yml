@@ -1,45 +1,68 @@
-name: Runners
+name: Input and Output
 # qual evento ira dar o trigger na pipeline
 on:
   # push:
   #   branches: ["main"]
   workflow_dispatch:
-env:
-  ENV_WORKFLOW: "ENV WORKFLOW"
+    inputs:
+      versao:
+        type: string
+        default: "dev"
+        required: true
+        description: "Release Version"
+      do_deploy:
+        type: boolean
+        required: true
+        description: "Make a deploy"
+      enviroment:
+        type: choice
+        required: true
+        description: "Choose the env"
+        options:
+          - dev
+          - homol
+          - prod
+# env:
+#   ENV_WORKFLOW: "ENV WORKFLOW"
 jobs:
-  runner-job:
-    name: "Meu primeiro Job"
+  input-output-job:
+    name: "Input and Output job"
     # onde sera executado a ação
     runs-on: ubuntu-latest
     steps:
-      - name: Instrala o ffmpeg
+      - name: "Print all inputs"
         run: |
-          sudo apt update --yes
-          sudo apt install ffmpeg --yes
-      - name: "Verifica se existe o ffmpeg"
-        run: |
-          ffmpeg --help
-          echo $ENV_WORKFLOW
-      - name: Contexto github
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Contexto env
-        env:
-          ENV_CONTEXT: ${{ toJson(env) }}
-        run: echo "$ENV_CONTEXT"
-      - name: Contexto job
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Contexto steps
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Contexto runner
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
+          echo "Printing all inputs"
+          echo ${{ inputs }}
+
+    #   - name: Instrala o ffmpeg
+    #     run: |
+    #       sudo apt update --yes
+    #       sudo apt install ffmpeg --yes
+    #   - name: "Verifica se existe o ffmpeg"
+    #     run: |
+    #       ffmpeg --help
+    #       echo $ENV_WORKFLOW
+    #   - name: Contexto github
+    #     env:
+    #       GITHUB_CONTEXT: ${{ toJson(github) }}
+    #     run: echo "$GITHUB_CONTEXT"
+    #   - name: Contexto env
+    #     env:
+    #       ENV_CONTEXT: ${{ toJson(env) }}
+    #     run: echo "$ENV_CONTEXT"
+    #   - name: Contexto job
+    #     env:
+    #       JOB_CONTEXT: ${{ toJson(job) }}
+    #     run: echo "$JOB_CONTEXT"
+    #   - name: Contexto steps
+    #     env:
+    #       STEPS_CONTEXT: ${{ toJson(steps) }}
+    #     run: echo "$STEPS_CONTEXT"
+    #   - name: Contexto runner
+    #     env:
+    #       RUNNER_CONTEXT: ${{ toJson(runner) }}
+    #     run: echo "$RUNNER_CONTEXT"
       # - name: "Segunda ação"
       #   run: echo "Voce criou o seu primeiro workflow"
   # segundo-job:
