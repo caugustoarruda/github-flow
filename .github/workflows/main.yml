@@ -5,7 +5,7 @@ on:
   #   branches: ["main"]
   workflow_dispatch:
     inputs:
-      version:
+      versao_:
         type: string
         default: "dev"
         required: true
